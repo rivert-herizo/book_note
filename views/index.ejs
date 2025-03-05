@@ -1,0 +1,23 @@
+<%- include("partials/header.ejs") %>
+
+<h1>Book List</h1>
+
+<!-- Form to add a new book -->
+<form action="/add_book" method="POST">
+    <input type="text" name="title" placeholder="Book Title" required>
+    <input type="text" name="isbn" placeholder="ISBN" required>
+    <button type="submit">Add Book</button>
+</form>
+
+
+<ul>
+    <% books.forEach(book => { %>
+        <li>
+            <a href="/books/<%= book.id %>"><h3><%= book.title %></h3></a>
+            <p>ISBN: <%= book.isbn %></p>
+            <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-L.jpg" alt="Book cover">
+        </li>
+    <% }) %>
+</ul>
+
+<%- include("partials/footer.ejs") %>

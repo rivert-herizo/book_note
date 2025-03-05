@@ -1,0 +1,27 @@
+{
+  "name": "book_",
+  "version": "1.0.0",
+  "description": "This is a book project",
+  "homepage": "https://github.com/rivert-herizo/book_note#readme",
+  "bugs": {
+    "url": "https://github.com/rivert-herizo/book_note/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rivert-herizo/book_note.git"
+  },
+  "license": "ISC",
+  "author": "Rivert Razafison",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "axios": "^1.8.1",
+    "body-parser": "^1.20.3",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "pg": "^8.13.3"
+  }
+}

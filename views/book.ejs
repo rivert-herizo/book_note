@@ -1,0 +1,30 @@
+<%- include("partials/header.ejs") %>
+
+<h1>Hello</h1>
+
+
+
+<% if (book) { %>
+    <h1><%= book.title %></h1>
+    <p><%= book.isbn %></p>
+    <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-L.jpg">
+<% } else { %>
+    <p>No book found.</p>
+<% } %>
+
+<!-- Form to add a new book -->
+<form action="/add_note/<%= book.id %>" method="POST">
+    <input type="text" name="note" placeholder="Note" required>
+    <button type="submit">Add Note</button>
+</form>
+
+<h2>Notes:</h2>
+<% if (notes && notes.length > 0) { %>
+    <% notes.forEach(note => { %>
+        <p><%= note.note %></p>
+    <% }) %>
+<% } else { %>
+    <p>No notes found.</p>
+<% } %>
+
+<%- include("partials/footer.ejs") %>
