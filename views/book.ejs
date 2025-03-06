@@ -5,9 +5,14 @@
 
 
 <% if (book) { %>
-    <h1><%= book.title %></h1>
-    <p><%= book.isbn %></p>
-    <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-L.jpg">
+    <div class="book">
+        <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-L.jpg">
+        <div class="book-info">    
+        <h1><%= book.title %></h1>
+        <p><%= book.isbn %></p>
+        </div>
+    </div>
+    
 <% } else { %>
     <p>No book found.</p>
 <% } %>

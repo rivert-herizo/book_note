@@ -1,23 +1,35 @@
 <%- include("partials/header.ejs") %>
 
-<h1>Book List</h1>
+<main>
+    <h1>Book List</h1>
+    <div class="books">
+            <% books.forEach(book => { %>
+                <div class="book">
+                    <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-L.jpg" alt="Book cover">
+                    <div class="book-info">
+                        <a href="/books/<%= book.id %>"><h3><%= book.title %></h3></a>
+                        <p>ISBN: <%= book.isbn %></p>
+                    </div> 
+                </div>
+            <% }) %>
+    </div> 
+</main>
 
-<!-- Form to add a new book -->
-<form action="/add_book" method="POST">
-    <input type="text" name="title" placeholder="Book Title" required>
-    <input type="text" name="isbn" placeholder="ISBN" required>
-    <button type="submit">Add Book</button>
-</form>
+
+<div class="form">
+        <!-- Form to add a new book -->
+        <div class="close">
+            <i class="ri-close-large-line"></i>
+        </div>
+        <form action="/add_book" method="POST">
+            <input type="text" name="title" placeholder="Book Title" required>
+            <br>
+            <input type="text" name="isbn" placeholder="ISBN" required>
+            <br>
+            <button type="submit">Add Book</button>
+        </form>
+</div>
 
 
-<ul>
-    <% books.forEach(book => { %>
-        <li>
-            <a href="/books/<%= book.id %>"><h3><%= book.title %></h3></a>
-            <p>ISBN: <%= book.isbn %></p>
-            <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-L.jpg" alt="Book cover">
-        </li>
-    <% }) %>
-</ul>
 
 <%- include("partials/footer.ejs") %>
