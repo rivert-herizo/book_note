@@ -92,7 +92,7 @@ footer {
     left: 0;
 }
 
-.form {
+.form, .editBookForm  {
     position: fixed;
     left: 50%;
     top: 50%;
@@ -107,7 +107,7 @@ footer {
     box-shadow: 1px 1px 5px grey;
 }
 
-form {
+form{
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -137,7 +137,11 @@ button {
     color: white;
 }
 
-.close {
+.editBook {
+    cursor: pointer;
+}
+
+.close, .editclose {
     position: absolute;
     top: 20px;
     right: 20px;

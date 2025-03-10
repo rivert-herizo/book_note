@@ -83,6 +83,31 @@ app.post('/add_note/:id', async (req, res) => {
     }
 })
 
+app.post('/edit_book/:id', async (req, res) => {
+    try {
+        const book_id = req.params.id;
+        const title = req.body.title;
+        const isbn = req.body.isbn;
+        db.query("UPDATE read_book SET title = $1, isbn = $2 WHERE id = $3;", [title, isbn, book_id]);
+        res.send('Data sent');
+    }
+    catch(e){
+        console.log(e);
+    }
+})
+
+app.delete('/delete_book/:id', async (req, res) => {
+    try {
+        const book_id = req.params.id;
+        await db.query("DELETE FROM read_book WHERE id = $1;", [book_id]);
+        res.json({ message: "Book deleted successfully" });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "Error deleting book" });
+    }
+});
+
+
 app.listen(port, () => {
     console.log('Server working');
 })

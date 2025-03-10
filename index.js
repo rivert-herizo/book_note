@@ -73,6 +73,35 @@ app.post("/add_note/:id", async (req, res) => {
     }
 });
 
+app.post("/edit_book/:id", async (req, res) => {
+    try {
+        const book_id = req.params.id;
+        const title = req.body.title;
+        const isbn = req.body.isbn;
+        try {
+            await axios.post(`http://localhost:3000/edit_book/${book_id}`, { title, isbn });
+            res.redirect(`/`);
+        } catch (err) {
+            console.log(err);
+        }
+    } catch (error) {
+        console.error("Error adding note:", error);
+        res.status(500).send("Error adding note");
+    }
+});
+
+app.post("/delete/:id", async (req, res) => {
+    try {
+        const book_id = req.params.id;
+        await axios.delete(`http://localhost:3000/delete_book/${book_id}`);
+        res.redirect(`/`);
+    } catch (error) {
+        console.error("Error deleting book:", error);
+        res.status(500).send("Error deleting book");
+    }
+});
+
+
 
 
 app.listen(port, () => {
